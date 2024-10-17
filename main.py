@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 
 from routes.users import route as route_user
-from routes.tasks import route as route_task
+from settings import settings_app
 
 app = FastAPI()
 
@@ -13,8 +13,12 @@ async def root():
     return RedirectResponse("/docs")
 
 
-app.include_router(route_user, prefix="/users")
-# app.include_router(route_task, prefix="/tasks")
+@app.get("/settings", tags=["tools"])
+async def settings_rout():
+    return settings_app
+
+
+app.include_router(route_user, prefix="/users", tags=["user"])
 
 if __name__ == "__main__":
     uvicorn.run(f"{__name__}:app", reload=True)

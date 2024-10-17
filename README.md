@@ -1,5 +1,8 @@
 # Використання моделей Pydantic
 
+mini project "user account"
+
+
 ## Dependency
 Встановлення залежностей 
 ```bash 
