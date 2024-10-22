@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     DB_NAME: str = "temp"
 
     def pg_dsn(self):
-        return (f"postgres://{self.DB_USER}:{self.DB_PASSWORD}"
+        return (f"postgresql+asyncpg://{self.DB_USER}:{self.DB_PASSWORD}"
                 f"@localhost:5432/{self.DB_NAME}")
 
     def sqlite_dsn(self):
@@ -25,7 +25,7 @@ class Settings(BaseSettings):
 
 settings_app = Settings()
 
-DATABASE_URL = settings_app.sqlite_dsn()
+DATABASE_URL = settings_app.pg_dsn()
 
 
 engine = create_async_engine(DATABASE_URL, echo=True)

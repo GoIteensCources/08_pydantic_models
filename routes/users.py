@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from shcemes.users import UsersBase, ListBaseUsers, UsersExtended, ForExtend
+from schemas.users import UsersBase, ListBaseUsers, UsersExtended, ForExtend
 
 route = APIRouter()
 
