@@ -18,7 +18,7 @@ async def settings_rout():
     return settings_app
 
 
-app.include_router(route_user, prefix="/users", tags=["user"])
+app.include_router(route_user, prefix="/users", tags=["users"])
 
 if __name__ == "__main__":
     uvicorn.run(f"{__name__}:app", reload=True)
