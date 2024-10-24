@@ -18,3 +18,4 @@ uvicorn main:app
 
 - Validation: https://docs.pydantic.dev/2.7/concepts/validators/#validation-of-default-values
 - Fastapi: https://fastapi.tiangolo.com/
+- pydantic-sqlalchemy: https://github.com/tiangolo/pydantic-sqlalchemy

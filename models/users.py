@@ -19,9 +19,11 @@ class User(Base):
     role: Mapped[UserType] = mapped_column()
 
     create_date: Mapped[datetime] = mapped_column(server_default=func.now())
-    user_details = relationship('UserDetails',
+    user_details: Mapped['UserDetails'] = relationship(
                                 back_populates='user',
-                                cascade="all, delete-orphan")
+                                cascade="all, delete-orphan",
+                                lazy="selectin"
+                                )
 
     def __str__(self):
         return f"User: {self.email}, {self.role}"
@@ -36,6 +38,4 @@ class UserDetails(Base):
     country: Mapped[str] = mapped_column()
 
     user_id: Mapped[int] = mapped_column(ForeignKey('users.id'), nullable=False)
-    user = relationship('User', back_populates='user_details')
-
-
+    user: Mapped['User'] = relationship(back_populates='user_details')
