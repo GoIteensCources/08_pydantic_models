@@ -15,11 +15,10 @@ class User(Base):
     name: Mapped[str]
     email: Mapped[str] = mapped_column(unique=True)
     password_hash: Mapped[str] = mapped_column()
-    create_date: Mapped[datetime] = mapped_column(server_default=func.now())
     age: Mapped[int]
-
     role: Mapped[UserType] = mapped_column()
 
+    create_date: Mapped[datetime] = mapped_column(server_default=func.now())
     user_details = relationship('UserDetails',
                                 back_populates='user',
                                 cascade="all, delete-orphan")

@@ -4,6 +4,7 @@ from models import User, UserDetails
 from settings import engine, Base, async_session
 from werkzeug.security import generate_password_hash
 
+
 async def create_bd():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
@@ -37,4 +38,3 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-

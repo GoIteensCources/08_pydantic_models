@@ -20,13 +20,12 @@ class Settings(BaseSettings):
                 f"@localhost:5432/{self.DB_NAME}")
 
     def sqlite_dsn(self):
-        return f"sqlite3:///./{self.DB_NAME}.db"
+        return f"sqlite:///./{self.DB_NAME}.db"
 
 
 settings_app = Settings()
 
 DATABASE_URL = settings_app.pg_dsn()
-
 
 engine = create_async_engine(DATABASE_URL, echo=True)
 async_session = async_sessionmaker(bind=engine)
